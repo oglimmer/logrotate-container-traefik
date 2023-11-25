@@ -1,0 +1,10 @@
+LOGPATH {
+  rotate 5
+  daily
+  compress
+  missingok
+  notifempty
+  postrotate
+    docker kill -s USR1 IMAGENAME
+  endscript
+}
