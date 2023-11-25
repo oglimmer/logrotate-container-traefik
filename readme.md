@@ -8,7 +8,7 @@ Example docker-compose usage:
 
 ```yml
   logrotate:
-     image: "logrotate"
+     image: oglimmer/logrotate-container-traefik
      restart: always
      environment:
        - IMAGENAME=traefik
