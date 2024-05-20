@@ -3,7 +3,7 @@
 set -eu
 
 
-if [ ! -f "/tmp/logrotate.status /etc/logrotate/logrotate.conf" ]; then
+if [ ! -f "/etc/logrotate/logrotate.conf" ]; then
   if [ -z "$IMAGENAME" ]; then
     echo "env var IMAGENAME is not set"
     exit 1
@@ -13,6 +13,7 @@ if [ ! -f "/tmp/logrotate.status /etc/logrotate/logrotate.conf" ]; then
     exit 1
   fi
   sed "s|LOGPATH|$LOGPATH|g" /etc/logrotate/logrotate.conf.template > /etc/logrotate/logrotate.conf
+  sed -i'' "s|IMAGENAME|$IMAGENAME|g" /etc/logrotate/logrotate.conf
 fi
 
 if [ -z "${1:-}" ]; then
